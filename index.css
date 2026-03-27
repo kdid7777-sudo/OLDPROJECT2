@@ -1,0 +1,251 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #0a0a0f;
+  font-family: 'Rajdhani', sans-serif;
+  overflow-x: hidden;
+}
+
+.font-orbitron {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.font-rajdhani {
+  font-family: 'Rajdhani', sans-serif;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #1a1a2e;
+}
+::-webkit-scrollbar-thumb {
+  background: #dc143c;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff1a4a;
+}
+
+/* Beat pad cell */
+.beat-cell {
+  transition: background 0.08s ease, box-shadow 0.08s ease, transform 0.05s ease;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.beat-cell:hover {
+  background: rgba(220, 20, 60, 0.18);
+  border-color: rgba(220, 20, 60, 0.4);
+  transform: scale(0.96);
+}
+
+.beat-cell.active {
+  background: #dc143c;
+  border-color: #ff1a4a;
+  box-shadow: 0 0 12px rgba(220, 20, 60, 0.7), 0 0 24px rgba(220, 20, 60, 0.3);
+}
+
+.beat-cell.playing {
+  filter: brightness(1.3);
+}
+
+.beat-cell.active.playing {
+  background: #ff3366;
+  box-shadow: 0 0 20px rgba(255, 51, 102, 0.9), 0 0 40px rgba(220, 20, 60, 0.5);
+}
+
+/* Playhead */
+.playhead-column {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(1px);
+  pointer-events: none;
+  z-index: 10;
+  transition: left 0.05s linear;
+  border-left: 2px solid rgba(255,255,255,0.4);
+  border-right: 2px solid rgba(255,255,255,0.4);
+}
+
+/* Glow text */
+.glow-text {
+  text-shadow: 0 0 20px rgba(220, 20, 60, 0.8), 0 0 40px rgba(220, 20, 60, 0.4);
+}
+
+.glow-text-subtle {
+  text-shadow: 0 0 10px rgba(220, 20, 60, 0.5);
+}
+
+/* Neon border */
+.neon-border {
+  border: 1px solid rgba(220, 20, 60, 0.5);
+  box-shadow: 0 0 10px rgba(220, 20, 60, 0.2), inset 0 0 10px rgba(220, 20, 60, 0.05);
+}
+
+/* Button glow */
+.btn-glow {
+  box-shadow: 0 0 15px rgba(220, 20, 60, 0.4);
+  transition: all 0.2s ease;
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 25px rgba(220, 20, 60, 0.7);
+  transform: translateY(-1px);
+}
+
+/* Home card hover */
+.home-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background: linear-gradient(135deg, rgba(20,20,40,0.9), rgba(10,10,20,0.95));
+  border: 1px solid rgba(220, 20, 60, 0.2);
+}
+
+.home-card:hover {
+  border-color: rgba(220, 20, 60, 0.7);
+  box-shadow: 0 0 30px rgba(220, 20, 60, 0.3), 0 20px 40px rgba(0,0,0,0.5);
+  transform: translateY(-4px);
+}
+
+/* Grid background pattern */
+.grid-bg {
+  background-image: 
+    linear-gradient(rgba(220, 20, 60, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(220, 20, 60, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Animated gradient */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animated-gradient {
+  background: linear-gradient(-45deg, #0a0a1a, #1a0510, #0d0d1f, #1a0a0a);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+}
+
+/* Pulse animation */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(220, 20, 60, 0.3); }
+  50% { box-shadow: 0 0 25px rgba(220, 20, 60, 0.8), 0 0 50px rgba(220, 20, 60, 0.3); }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Row label */
+.row-label {
+  background: linear-gradient(135deg, rgba(220, 20, 60, 0.15), rgba(220, 20, 60, 0.05));
+  border: 1px solid rgba(220, 20, 60, 0.25);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.row-label:hover {
+  background: linear-gradient(135deg, rgba(220, 20, 60, 0.3), rgba(220, 20, 60, 0.15));
+  border-color: rgba(220, 20, 60, 0.5);
+}
+
+/* Input styles */
+.kdmph-input {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(220, 20, 60, 0.3);
+  border-radius: 6px;
+  color: white;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.kdmph-input:focus {
+  border-color: rgba(220, 20, 60, 0.7);
+  box-shadow: 0 0 10px rgba(220, 20, 60, 0.2);
+}
+
+/* Tooltip */
+.tooltip {
+  position: relative;
+}
+.tooltip:hover::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(20, 20, 40, 0.95);
+  color: #fff;
+  font-size: 11px;
+  white-space: nowrap;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(220, 20, 60, 0.4);
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+}
+
+/* Beat grid container scroll */
+.beat-grid-scroll {
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+/* Column number */
+.col-number {
+  color: rgba(255,255,255,0.3);
+  font-size: 10px;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Waveform bars */
+@keyframes waveform {
+  0%, 100% { height: 4px; }
+  50% { height: 20px; }
+}
+
+.wave-bar {
+  width: 3px;
+  background: #dc143c;
+  border-radius: 2px;
+  animation: waveform 0.8s ease-in-out infinite;
+}
+
+/* Stars background */
+.stars-bg::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.15) 0%, transparent 100%),
+    radial-gradient(1px 1px at 80% 10%, rgba(255,255,255,0.1) 0%, transparent 100%),
+    radial-gradient(1px 1px at 50% 70%, rgba(255,255,255,0.12) 0%, transparent 100%),
+    radial-gradient(1px 1px at 10% 80%, rgba(255,255,255,0.08) 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 60%, rgba(255,255,255,0.1) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
